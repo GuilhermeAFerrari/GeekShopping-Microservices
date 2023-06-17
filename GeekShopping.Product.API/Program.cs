@@ -1,3 +1,5 @@
+using AutoMapper;
+using GeekShopping.Product.API.Configure;
 using GeekShopping.Product.API.Models.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
@@ -16,6 +18,11 @@ builder.Services.AddSwaggerGen(c =>
 
 builder.Services.AddDbContext<SqlServerContext>(options =>
             options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServerConnection")));
+
+// Add auto mapper
+IMapper mapper = MappingConfigure.RegisterMaps().CreateMapper();
+builder.Services.AddSingleton(mapper);
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();
 
