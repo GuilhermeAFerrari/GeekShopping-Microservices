@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using GeekShopping.Product.API.Data.ValueObjects;
+using GeekShopping.Product.API.Models;
 
 namespace GeekShopping.Product.API.Configure
 {
@@ -9,8 +10,8 @@ namespace GeekShopping.Product.API.Configure
         {
             var mappingConfig = new MapperConfiguration(config =>
             {
-                config.CreateMap<ProductVO, ModelsProduct>();
-                config.CreateMap<ProductVO, Models.Product>();
+                config.CreateMap<ProductVO, ProductEntity>();
+                config.CreateMap<ProductVO, ProductEntity>();
             });
 
             return mappingConfig;

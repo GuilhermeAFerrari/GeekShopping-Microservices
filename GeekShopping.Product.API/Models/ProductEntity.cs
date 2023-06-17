@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace GeekShopping.Product.API.Models
 {
     [Table("product")]
-    public class Product : BaseEntity
+    public class ProductEntity : BaseEntity
     {
         [Column("name")]
         [Required]
