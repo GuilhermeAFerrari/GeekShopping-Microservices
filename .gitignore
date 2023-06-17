@@ -478,3 +478,12 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
+
+# visual studio folder
+.vs
+
+# bin folder dotnet
+bin
+
+# obj folder dotnet
+obj
