@@ -480,7 +480,7 @@ $RECYCLE.BIN/
 *.swp
 
 # visual studio folder
-.vs
+/.vs/
 
 # bin folder dotnet
 /bin/
