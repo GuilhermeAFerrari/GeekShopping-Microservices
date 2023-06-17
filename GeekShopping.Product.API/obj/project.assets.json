@@ -4066,11 +4066,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\guile\\OneDrive\\Documentos\\Guilherme\\Projects\\StudyProjects\\GeekShopping-Microsservices\\GeekShopping\\GeekShopping.Product.API\\GeekShopping.Product.API.csproj",
+      "projectUniqueName": "C:\\Users\\guile\\OneDrive\\Documentos\\Guilherme\\Projects\\StudyProjects\\GeekShopping-Microservices\\GeekShopping.Product.API\\GeekShopping.Product.API.csproj",
       "projectName": "GeekShopping.Product.API",
-      "projectPath": "C:\\Users\\guile\\OneDrive\\Documentos\\Guilherme\\Projects\\StudyProjects\\GeekShopping-Microsservices\\GeekShopping\\GeekShopping.Product.API\\GeekShopping.Product.API.csproj",
+      "projectPath": "C:\\Users\\guile\\OneDrive\\Documentos\\Guilherme\\Projects\\StudyProjects\\GeekShopping-Microservices\\GeekShopping.Product.API\\GeekShopping.Product.API.csproj",
       "packagesPath": "C:\\Users\\guile\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\guile\\OneDrive\\Documentos\\Guilherme\\Projects\\StudyProjects\\GeekShopping-Microsservices\\GeekShopping\\GeekShopping.Product.API\\obj\\",
+      "outputPath": "C:\\Users\\guile\\OneDrive\\Documentos\\Guilherme\\Projects\\StudyProjects\\GeekShopping-Microservices\\GeekShopping.Product.API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
