@@ -45,7 +45,7 @@ namespace GeekShopping.Product.API.Repositories
             return _mapper.Map<ProductVO>(productEntity);
         }
 
-        public async Task<bool> DeleteAsync(long id)
+        public async Task<bool> DeleteByIdAsync(long id)
         {
             try
             {

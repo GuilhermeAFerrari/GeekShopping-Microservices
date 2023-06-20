@@ -9,12 +9,10 @@ namespace GeekShopping.Product.API.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
-        private readonly SqlServerContext _context;
         private readonly IProductRepository _repository;
 
         public ProductController(SqlServerContext context, IProductRepository repository)
         {
-            _context = context;
             _repository = repository ?? throw new ArgumentNullException(nameof(repository));
         }
 
@@ -34,7 +32,7 @@ namespace GeekShopping.Product.API.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<ProductVO>> Create(ProductVO productVO)
+        public async Task<ActionResult<ProductVO>> Create([FromBody]ProductVO productVO)
         {
             if (productVO is null) return BadRequest();
             var product = await _repository.CreateAsync(productVO);
@@ -42,7 +40,7 @@ namespace GeekShopping.Product.API.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult<ProductVO>> Update(ProductVO productVO)
+        public async Task<ActionResult<ProductVO>> Update([FromBody]ProductVO productVO)
         {
             if (productVO is null) return BadRequest();
             var product = await _repository.UpdateAsync(productVO);
@@ -52,7 +50,7 @@ namespace GeekShopping.Product.API.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(long id)
         {
-            var status = await _repository.DeleteAsync(id);
+            var status = await _repository.DeleteByIdAsync(id);
             return status ? Ok(status) : BadRequest();
         }
     }

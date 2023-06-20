@@ -19,14 +19,14 @@ namespace GeekShopping.Product.API.Models
 
         [Column("description")]
         [StringLength(500)]
-        public string Description { get; set; } = string.Empty;
+        public string Description { get; set; } = null!;
 
         [Column("category_name")]
         [StringLength(50)]
-        public string CategoryName { get; set; } = string.Empty;
+        public string CategoryName { get; set; } = null!;
 
         [Column("image_url")]
         [StringLength(300)]
-        public string ImageUrl { get; set; } = string.Empty;
+        public string ImageUrl { get; set; } = null!;
     }
 }
