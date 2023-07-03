@@ -1,13 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace GeekShopping.IdentityServer.Model
 {
-    public class Context : DbContext
+    public class SqlServerContext : IdentityDbContext<ApplicationUser>
     {
-        public SqlServerContext() { }
-
         public SqlServerContext(DbContextOptions<SqlServerContext> options) : base(options) { }
-
-        public DbSet<ProductEntity> Products { get; set; }
     }
 }
