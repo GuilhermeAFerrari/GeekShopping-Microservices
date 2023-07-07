@@ -61,7 +61,7 @@ app.MapControllerRoute(
 
 app.Run();
 
-void SeedUserRoles(IApplicationBuilder app)
+static void SeedUserRoles(IApplicationBuilder app)
 {
     using var serviceScope = app.ApplicationServices.CreateScope();
     var seed = serviceScope.ServiceProvider.GetService<IDbInitializer>();
