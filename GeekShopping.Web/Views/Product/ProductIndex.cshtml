@@ -42,9 +42,12 @@
                         <a asp-action="ProductUpdate" class="btn btn-outline-warning" asp-route-id="@item.Id">
                             <img src="~/images/edit-icon.svg" width="20" />
                         </a>
-                        <a asp-action="ProductDelete" class="btn btn-danger" asp-route-id="@item.Id">
-                            <img src="~/images/delete-icon.svg" width="20" />
-                        </a>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <a asp-action="ProductDelete" class="btn btn-danger" asp-route-id="@item.Id">
+                                <img src="~/images/delete-icon.svg" width="20" />
+                            </a>
+                        }
                     </td>
                 </tr>
             }
