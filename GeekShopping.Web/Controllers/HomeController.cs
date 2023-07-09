@@ -59,7 +59,6 @@ namespace GeekShopping.Web.Controllers
 
             List<CartDetailViewModel> cartDetails = new();
             cartDetails.Add(cartDetail);
-
             cart.CartDetails = cartDetails;
 
             var response = await _cartService.AddItemToCart(cart, token);

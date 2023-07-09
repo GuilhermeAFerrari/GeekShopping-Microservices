@@ -25,6 +25,7 @@ namespace GeekShopping.Web.Services
         public async Task<CartViewModel> AddItemToCart(CartViewModel model, string token)
         {
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
             var response = await _httpClient.PostAsJson($"{BasePath}/add-cart", model);
             if (response.IsSuccessStatusCode)
                 return await response.ReadContentAs<CartViewModel>();

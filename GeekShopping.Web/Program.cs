@@ -37,7 +37,6 @@ builder.Services.AddHttpClient<ICartService, CartService>(c =>
     c.BaseAddress = new Uri(builder.Configuration["ServicesUrls:Cart.API"]);
 });
 
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
