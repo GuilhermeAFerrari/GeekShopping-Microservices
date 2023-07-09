@@ -32,6 +32,11 @@ builder.Services.AddHttpClient<IProductService, ProductService>(c =>
     c.BaseAddress = new Uri(builder.Configuration["ServicesUrls:Product.API"]);
 });
 
+builder.Services.AddHttpClient<ICartService, CartService>(c =>
+{
+    c.BaseAddress = new Uri(builder.Configuration["ServicesUrls:Cart.API"]);
+});
+
 
 var app = builder.Build();
 

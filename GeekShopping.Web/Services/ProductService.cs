@@ -15,37 +15,37 @@ namespace GeekShopping.Web.Services
             _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
         }
 
-        public async Task<IEnumerable<ProductModel>> FindAllAsync(string token)
+        public async Task<IEnumerable<ProductViewModel>> FindAllAsync(string token)
         {
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
             var response = await _httpClient.GetAsync(BASE_PATH);
-            return await response.ReadContentAs<List<ProductModel>>();
+            return await response.ReadContentAs<List<ProductViewModel>>();
         }
 
-        public async Task<ProductModel> FindByIdAsync(long id, string token)
+        public async Task<ProductViewModel> FindByIdAsync(long id, string token)
         {
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
             var response = await _httpClient.GetAsync($"{BASE_PATH}/{id}");
-            return await response.ReadContentAs<ProductModel>();
+            return await response.ReadContentAs<ProductViewModel>();
         }
 
-        public async Task<ProductModel> CreateAsync(ProductModel model, string token)
+        public async Task<ProductViewModel> CreateAsync(ProductViewModel model, string token)
         {
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
             var response = await _httpClient.PostAsJson(BASE_PATH, model);
             if (response.IsSuccessStatusCode)
-                return await response.ReadContentAs<ProductModel>();
+                return await response.ReadContentAs<ProductViewModel>();
             else
                 throw new Exception("Something went wrong when calling API");
         }
 
-        public async Task<ProductModel> UpdateAsync(ProductModel model, string token)
+        public async Task<ProductViewModel> UpdateAsync(ProductViewModel model, string token)
         {
 
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
             var response = await _httpClient.PutAsJson(BASE_PATH, model);
             if (response.IsSuccessStatusCode)
-                return await response.ReadContentAs<ProductModel>();
+                return await response.ReadContentAs<ProductViewModel>();
             else
                 throw new Exception("Something went wrong when calling API");
         }
