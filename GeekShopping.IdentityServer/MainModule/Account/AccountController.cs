@@ -257,6 +257,15 @@ namespace IdentityServerHost.Quickstart.UI
             return View();
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Register(string returnUrl)
+        {
+            // build a model so we know what to show on the reg page
+            var vm = await BuildRegisterViewModelAsync(returnUrl);
+
+            return View(vm);
+        }
+
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -340,6 +349,68 @@ namespace IdentityServerHost.Quickstart.UI
 
             // If we got this far, something failed, redisplay form
             return View(model);
+        }
+
+        private async Task<RegisterViewModel> BuildRegisterViewModelAsync(string returnUrl)
+        {
+            var context = await _interaction.GetAuthorizationContextAsync(returnUrl);
+            List<string> roles = new List<string>();
+            roles.Add("Admin");
+            roles.Add("Client");
+            ViewBag.message = roles;
+            if (context?.IdP != null && await _schemeProvider.GetSchemeAsync(context.IdP) != null)
+            {
+                var local = context.IdP == IdentityServerConstants.LocalIdentityProvider;
+
+                // this is meant to short circuit the UI and only trigger the one external IdP
+                var vm = new RegisterViewModel
+                {
+                    EnableLocalLogin = local,
+                    ReturnUrl = returnUrl,
+                    Username = context?.LoginHint,
+                };
+
+                if (!local)
+                {
+                    vm.ExternalProviders = new[] { new ExternalProvider { AuthenticationScheme = context.IdP } };
+                }
+
+                return vm;
+            }
+
+            var schemes = await _schemeProvider.GetAllSchemesAsync();
+
+            var providers = schemes
+                .Where(x => x.DisplayName != null)
+                .Select(x => new ExternalProvider
+                {
+                    DisplayName = x.DisplayName ?? x.Name,
+                    AuthenticationScheme = x.Name
+                }).ToList();
+
+            var allowLocal = true;
+            if (context?.Client.ClientId != null)
+            {
+                var client = await _clientStore.FindEnabledClientByIdAsync(context.Client.ClientId);
+                if (client != null)
+                {
+                    allowLocal = client.EnableLocalLogin;
+
+                    if (client.IdentityProviderRestrictions != null && client.IdentityProviderRestrictions.Any())
+                    {
+                        providers = providers.Where(provider => client.IdentityProviderRestrictions.Contains(provider.AuthenticationScheme)).ToList();
+                    }
+                }
+            }
+
+            return new RegisterViewModel
+            {
+                AllowRememberLogin = AccountOptions.AllowRememberLogin,
+                EnableLocalLogin = allowLocal && AccountOptions.AllowLocalLogin,
+                ReturnUrl = returnUrl,
+                Username = context?.LoginHint,
+                ExternalProviders = providers.ToArray()
+            };
         }
 
         private async Task<LoginViewModel> BuildLoginViewModelAsync(string returnUrl)
