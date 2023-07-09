@@ -1,7 +1,6 @@
 using AutoMapper;
-using GeekShopping.Product.API.Configure;
-using GeekShopping.Product.API.Models.Context;
-using GeekShopping.Product.API.Repositories;
+using GeekShopping.Cart.API.Configure;
+using GeekShopping.Cart.API.Models.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -36,7 +35,7 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "GeekShopping Product API", Version = "v1" });
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "GeekShopping Cart API", Version = "v1" });
     c.EnableAnnotations();
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
@@ -73,8 +72,7 @@ IMapper mapper = MappingConfigure.RegisterMaps().CreateMapper();
 builder.Services.AddSingleton(mapper);
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-// Add Repositories
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
+//Add Repositories
 
 var app = builder.Build();
 

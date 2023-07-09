@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Diagnostics.HealthChecks;
+using System.ComponentModel.DataAnnotations;
 
 namespace GeekShopping.Web.Models
 {
@@ -10,7 +11,9 @@ namespace GeekShopping.Web.Models
         public string Description { get; set; } = null!;
         public string CategoryName { get; set; } = null!;
         public string ImageUrl { get; set; } = null!;
-        public int Count { get; set; }
+
+        [Range(1, 100)]
+        public int Count { get; set; } = 1;
 
         public string SubstringName()
         {
