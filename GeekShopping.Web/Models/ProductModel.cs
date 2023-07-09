@@ -17,14 +17,14 @@ namespace GeekShopping.Web.Models
 
         public string SubstringName()
         {
-            if (Name.Length < 24) return Name;
-            return $"{Name.Substring(0, 21)} ...";
+            if (Name.Length < 18) return Name;
+            return $"{Name.Substring(0, 18)} ...";
         }
 
         public string SubstringDescription()
         {
-            if (Description.Length < 24) return Description;
-            return $"{Description.Substring(0, 21)} ...";
+            if (Description.Length < 100) return Description;
+            return $"{Description.Substring(0, 100)} ...";
         }
     }
 }
