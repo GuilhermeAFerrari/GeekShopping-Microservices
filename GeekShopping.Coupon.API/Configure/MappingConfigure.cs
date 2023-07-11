@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using GeekShopping.Product.API.Data.ValueObjects;
-using GeekShopping.Product.API.Models;
+using GeekShopping.Coupon.API.Data.ValueObjects;
+using GeekShopping.Coupon.API.Models;
 
-namespace GeekShopping.Product.API.Configure
+namespace GeekShopping.Coupon.API.Configure
 {
     public class MappingConfigure
     {
@@ -10,7 +10,7 @@ namespace GeekShopping.Product.API.Configure
         {
             var mappingConfig = new MapperConfiguration(config =>
             {
-                config.CreateMap<ProductVO, ProductEntity>().ReverseMap();
+                config.CreateMap<CouponVO, CouponEntity>().ReverseMap();
             });
 
             return mappingConfig;

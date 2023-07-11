@@ -5,6 +5,6 @@
         public long Id { get; set; }
         public string UserId { get; set; } = null!;
         public string CouponCode { get; set; } = null!;
-        public double PurchaseAmount { get; set; }
+        public decimal PurchaseAmount { get; set; }
     }
 }
