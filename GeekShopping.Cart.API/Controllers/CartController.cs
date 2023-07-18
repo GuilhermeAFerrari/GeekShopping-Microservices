@@ -1,5 +1,6 @@
 using GeekShopping.Cart.API.Data.ValueObjects;
 using GeekShopping.Cart.API.Repositories;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GeekShopping.Cart.API.Controllers
@@ -43,6 +44,22 @@ namespace GeekShopping.Cart.API.Controllers
         public async Task<ActionResult<CartVO>> RemoveCart(int id)
         {
             var status = await _repository.RemoveFromCart(id);
+            if (!status) return BadRequest();
+            return Ok(status);
+        }
+
+        [HttpPost ("apply-coupon")]
+        public async Task<ActionResult<CartVO>> ApplyCoupon(CartVO model)
+        {
+            var status = await _repository.ApplyCoupon(model.CartHeader.UserId, model.CartHeader.CouponCode);
+            if (!status) return BadRequest();
+            return Ok(status);
+        }
+
+        [HttpDelete("remove-coupon/{userId}")]
+        public async Task<ActionResult<CartVO>> RemoveCoupon(string userId)
+        {
+            var status = await _repository.RemoveCoupon(userId);
             if (!status) return BadRequest();
             return Ok(status);
         }
