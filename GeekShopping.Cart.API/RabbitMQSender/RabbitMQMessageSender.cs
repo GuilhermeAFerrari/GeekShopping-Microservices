@@ -8,16 +8,12 @@ namespace GeekShopping.Cart.API.RabbitMQSender
 {
     public class RabbitMQMessageSender : IRabbitMQMessageSender
     {
-        private readonly string _hostName;
-        private readonly string _password;
-        private readonly string _userName;
+        private readonly IConfiguration _configuration;
         private IConnection _connection;
 
-        public RabbitMQMessageSender()
+        public RabbitMQMessageSender(IConfiguration configuration)
         {
-            _hostName = "localhost";
-            _password = "guest";
-            _userName = "guest";
+            _configuration = configuration;
         }
 
         public void SendMessage(BaseMessage message, string queueName)
@@ -26,9 +22,9 @@ namespace GeekShopping.Cart.API.RabbitMQSender
             {
                 var factory = new ConnectionFactory
                 {
-                    HostName = _hostName,
-                    UserName = _userName,
-                    Password = _password
+                    HostName = _configuration["RabbitMQ:HostName"],
+                    UserName = _configuration["RabbitMQ:UserName"],
+                    Password = _configuration["RabbitMQ:Password"]
                 };
                 _connection = factory.CreateConnection();
 
@@ -46,14 +42,14 @@ namespace GeekShopping.Cart.API.RabbitMQSender
             }
         }
 
-            private byte[] GetMessageAsByteArray(BaseMessage message)
+        private byte[] GetMessageAsByteArray(BaseMessage message)
+        {
+            var options = new JsonSerializerOptions
             {
-                var options = new JsonSerializerOptions
-                {
-                    WriteIndented = true,
-                };
-                var json = JsonSerializer.Serialize((CheckoutHeaderVO)message, options);
-                return Encoding.UTF8.GetBytes(json);
-            }
+                WriteIndented = true,
+            };
+            var json = JsonSerializer.Serialize((CheckoutHeaderVO)message, options);
+            return Encoding.UTF8.GetBytes(json);
         }
     }
+}
