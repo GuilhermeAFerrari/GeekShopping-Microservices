@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeekShopping.Coupon.API", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integration", "Integration", "{3754304F-EBE1-434B-94A6-E2F931739A28}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeekShopping.MessageBus", "GeekShopping.MessageBus\GeekShopping.MessageBus.csproj", "{3EEBD49E-639B-43A3-A488-9561D922C980}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeekShopping.MessageBus", "GeekShopping.MessageBus\GeekShopping.MessageBus.csproj", "{3EEBD49E-639B-43A3-A488-9561D922C980}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeekShopping.Order.API", "GeekShopping.Order.API\GeekShopping.Order.API.csproj", "{52BDB531-DB67-4357-A1AE-6169654C9FDB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{3EEBD49E-639B-43A3-A488-9561D922C980}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3EEBD49E-639B-43A3-A488-9561D922C980}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3EEBD49E-639B-43A3-A488-9561D922C980}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52BDB531-DB67-4357-A1AE-6169654C9FDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52BDB531-DB67-4357-A1AE-6169654C9FDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52BDB531-DB67-4357-A1AE-6169654C9FDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52BDB531-DB67-4357-A1AE-6169654C9FDB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +68,7 @@ Global
 		{786E0320-0D78-41F1-B1F7-9143BD153219} = {DA8E57A2-1434-4E94-8B3F-8EC122E2D42E}
 		{A6EE0E41-20C0-4621-B8E5-6907B2E49CB7} = {DA8E57A2-1434-4E94-8B3F-8EC122E2D42E}
 		{3EEBD49E-639B-43A3-A488-9561D922C980} = {3754304F-EBE1-434B-94A6-E2F931739A28}
+		{52BDB531-DB67-4357-A1AE-6169654C9FDB} = {DA8E57A2-1434-4E94-8B3F-8EC122E2D42E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0DFF214A-036E-4839-8E7E-4BCB6B45EDC9}
