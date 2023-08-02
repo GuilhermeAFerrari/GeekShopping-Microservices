@@ -1,4 +1,5 @@
 using GeekShopping.Order.API.Models.Context;
+using GeekShopping.Order.API.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -66,6 +67,9 @@ var app = builder.Build();
 
 builder.Services.AddDbContext<SqlServerContext>(options =>
             options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServerConnection")));
+
+//Add Repositories
+builder.Services.AddSingleton<IOrderRepository, OrderRepository>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GeekShopping.Order.API.Repositories
 {
-    public class OrderRepository
+    public class OrderRepository : IOrderRepository
     {
         private readonly DbContextOptions<SqlServerContext> _context;
 
