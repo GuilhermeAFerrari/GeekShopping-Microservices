@@ -36,9 +36,7 @@ namespace GeekShopping.Cart.API.RabbitMQSender
             }
             catch (Exception ex)
             {
-
-                throw;
-
+                throw new Exception("An error ocurred while sending the message", ex);
             }
         }
 

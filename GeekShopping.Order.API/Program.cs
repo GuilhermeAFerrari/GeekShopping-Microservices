@@ -1,3 +1,4 @@
+using GeekShopping.Order.API.MessageConsumer;
 using GeekShopping.Order.API.Models.Context;
 using GeekShopping.Order.API.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -70,6 +71,9 @@ builder.Services.AddDbContext<SqlServerContext>(options =>
 
 //Add Repositories
 builder.Services.AddSingleton<IOrderRepository, OrderRepository>();
+
+//Add message broker
+builder.Services.AddHostedService<RabbitMQCheckoutConsumer>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
