@@ -76,9 +76,15 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 //Add Repositories
 builder.Services.AddScoped<ICartRepository, CartRepository>();
+builder.Services.AddScoped<ICouponRepository, CouponRepository>();
 
 //Add message broker
 builder.Services.AddSingleton<IRabbitMQMessageSender, RabbitMQMessageSender>();
+
+//Add http client
+builder.Services.AddHttpClient<ICouponRepository, CouponRepository>(
+    s => s.BaseAddress = new Uri(builder.Configuration["ServicesUrls:Coupon.API"])
+);
 
 var app = builder.Build();
 

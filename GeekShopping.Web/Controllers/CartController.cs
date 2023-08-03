@@ -82,9 +82,16 @@ namespace GeekShopping.Web.Controllers
             var token = await HttpContext.GetTokenAsync("access_token");
 
             var response = await _cartService.Checkout(model.CartHeader, token);
-
-            if (response is not null)
+            if (response is not null && response.GetType() == typeof(string))
+            {
+                TempData["Error"] = response;
+                return RedirectToAction(nameof(Checkout));
+            }
+            else if (response is not null)
+            {
                 return RedirectToAction(nameof(Confirmation));
+            }
+
             
             return View(model);
         }
