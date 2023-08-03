@@ -2,6 +2,7 @@ using GeekShopping.Order.API.MessageConsumer;
 using GeekShopping.Order.API.Models.Context;
 using GeekShopping.Order.API.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 
@@ -64,16 +65,19 @@ builder.Services.AddSwaggerGen(c =>
                 });
 });
 
-var app = builder.Build();
-
 builder.Services.AddDbContext<SqlServerContext>(options =>
             options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServerConnection")));
 
+var dbContextBuilder = new DbContextOptionsBuilder<SqlServerContext>();
+dbContextBuilder.UseSqlServer(builder.Configuration.GetConnectionString("SqlServerConnection"));
+
 //Add Repositories
-builder.Services.AddSingleton<IOrderRepository, OrderRepository>();
+builder.Services.AddSingleton(new OrderRepository(dbContextBuilder.Options));
 
 //Add message broker
 builder.Services.AddHostedService<RabbitMQCheckoutConsumer>();
+
+var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
