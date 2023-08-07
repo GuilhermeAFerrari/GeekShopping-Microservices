@@ -1,5 +1,6 @@
 using GeekShopping.Order.API.MessageConsumer;
 using GeekShopping.Order.API.Models.Context;
+using GeekShopping.Order.API.RabbitMQSender;
 using GeekShopping.Order.API.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -76,6 +77,8 @@ builder.Services.AddSingleton(new OrderRepository(dbContextBuilder.Options));
 
 //Add message broker
 builder.Services.AddHostedService<RabbitMQCheckoutConsumer>();
+builder.Services.AddSingleton<IRabbitMQMessageSender, RabbitMQMessageSender>();
+
 
 var app = builder.Build();
 
