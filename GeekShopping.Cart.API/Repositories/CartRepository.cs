@@ -55,7 +55,7 @@ namespace GeekShopping.Cart.API.Repositories
             Models.Cart cart = new()
             {
                 CartHeader = await _context.CartHeaders
-                   .FirstOrDefaultAsync(c => c.UserId == userId),
+                   .FirstOrDefaultAsync(c => c.UserId == userId) ?? new CartHeaderEntity(),
             };
 
             cart.CartDetails = _context.CartDetails

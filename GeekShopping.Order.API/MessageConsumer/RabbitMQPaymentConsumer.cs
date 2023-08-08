@@ -13,7 +13,7 @@ namespace GeekShopping.Order.API.MessageConsumer
         private IConnection _connection;
         private IModel _channel;
 
-        public RabbitMQPaymentConsumer(IOrderRepository orderRepository)
+        public RabbitMQPaymentConsumer(OrderRepository orderRepository)
         {
             var factory = new ConnectionFactory
             {
