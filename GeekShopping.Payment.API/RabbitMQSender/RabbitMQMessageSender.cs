@@ -10,21 +10,22 @@ namespace GeekShopping.Payment.API.RabbitMQSender
     {
         private readonly IConfiguration _configuration;
         private IConnection _connection;
+        private const string EXCHANGE_NAME = "FanoutPaymentUpdateExchange";
 
         public RabbitMQMessageSender(IConfiguration configuration)
         {
             _configuration = configuration;
         }
 
-        public void SendMessage(BaseMessage message, string queueName)
+        public void SendMessage(BaseMessage message)
         {
             if (ConnectionExists())
             {
                 using var channel = _connection.CreateModel();
-                channel.QueueDeclare(queue: queueName, false, false, false, arguments: null);
+                channel.ExchangeDeclare(EXCHANGE_NAME, ExchangeType.Fanout, durable: false);
                 byte[] body = GetMessageAsByteArray(message);
                 channel.BasicPublish(
-                    exchange: "", routingKey: queueName, basicProperties: null, body: body);
+                    exchange: EXCHANGE_NAME, "", basicProperties: null, body: body);
             }
         }
 
