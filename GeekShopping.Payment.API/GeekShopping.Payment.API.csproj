@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GeekShopping.MessageBus\GeekShopping.MessageBus.csproj" />
+    <ProjectReference Include="..\GeekShopping.MessageBus\GeekShopping.MessageBus.Library.csproj" />
     <ProjectReference Include="..\GeekShopping.PaymentProcessor.Library\GeekShopping.PaymentProcessor.Library.csproj" />
   </ItemGroup>
 

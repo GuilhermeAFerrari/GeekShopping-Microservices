@@ -19,15 +19,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeekShopping.Coupon.API", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integration", "Integration", "{3754304F-EBE1-434B-94A6-E2F931739A28}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeekShopping.MessageBus", "GeekShopping.MessageBus\GeekShopping.MessageBus.csproj", "{3EEBD49E-639B-43A3-A488-9561D922C980}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeekShopping.MessageBus.Library", "GeekShopping.MessageBus\GeekShopping.MessageBus.Library.csproj", "{3EEBD49E-639B-43A3-A488-9561D922C980}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeekShopping.Order.API", "GeekShopping.Order.API\GeekShopping.Order.API.csproj", "{52BDB531-DB67-4357-A1AE-6169654C9FDB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Payments", "Payments", "{7D160023-FFA0-456A-AB4C-DF5FBB223A6F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeekShopping.PaymentProcessor.Library", "GeekShopping.PaymentProcessor.Library\GeekShopping.PaymentProcessor.Library.csproj", "{ADDA7D90-54B8-4BCC-AC77-ED6667218735}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeekShopping.PaymentProcessor.Library", "GeekShopping.PaymentProcessor.Library\GeekShopping.PaymentProcessor.Library.csproj", "{ADDA7D90-54B8-4BCC-AC77-ED6667218735}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeekShopping.Payment.API", "GeekShopping.Payment.API\GeekShopping.Payment.API.csproj", "{E0700A69-66DC-4435-A4E7-044C3D18B359}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeekShopping.Payment.API", "GeekShopping.Payment.API\GeekShopping.Payment.API.csproj", "{E0700A69-66DC-4435-A4E7-044C3D18B359}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
