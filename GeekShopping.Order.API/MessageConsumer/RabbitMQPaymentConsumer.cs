@@ -28,7 +28,7 @@ namespace GeekShopping.Order.API.MessageConsumer
 
             _channel.ExchangeDeclare(EXCHANGE_NAME, ExchangeType.Direct);
             _channel.QueueDeclare(PAYMENT_ORDER_UPDATE_QUEUE_NAME, false, false, false, null);
-            _channel.QueueBind(_queueName, EXCHANGE_NAME, "PaymentOrder");
+            _channel.QueueBind(PAYMENT_ORDER_UPDATE_QUEUE_NAME, EXCHANGE_NAME, "PaymentOrder");
 
             _orderRepository = orderRepository;
         }
@@ -44,7 +44,7 @@ namespace GeekShopping.Order.API.MessageConsumer
                 UpdatePaymentStatus(vo).GetAwaiter().GetResult();
                 _channel.BasicAck(evt.DeliveryTag, false);
             };
-            _channel.BasicConsume(_queueName, false, consumer);
+            _channel.BasicConsume(PAYMENT_ORDER_UPDATE_QUEUE_NAME, false, consumer);
             return Task.CompletedTask;
         }
 

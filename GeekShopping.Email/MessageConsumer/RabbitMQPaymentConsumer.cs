@@ -28,7 +28,7 @@ namespace GeekShopping.Email.MessageConsumer
 
             _channel.ExchangeDeclare(EXCHANGE_NAME, ExchangeType.Direct);
             _channel.QueueDeclare(PAYMENT_EMAIL_UPDATE_QUEUE_NAME, false, false, false, null);
-            _channel.QueueBind(_queueName, EXCHANGE_NAME, "PaymentEmail");
+            _channel.QueueBind(PAYMENT_EMAIL_UPDATE_QUEUE_NAME, EXCHANGE_NAME, "PaymentEmail");
 
             _emailRepository = orderRepository;
         }
